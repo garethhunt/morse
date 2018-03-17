@@ -1,0 +1,8 @@
+{
+  "name": "morse",
+  "version": "0.0.1",
+  "description": "Use morse code to demo the web audio and vibrate APIs",
+  "main": "index.js",
+  "author": "Gareth Hunt",
+  "license": "MIT"
+}

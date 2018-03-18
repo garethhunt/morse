@@ -4,5 +4,11 @@
   "description": "Use morse code to demo the web audio and vibrate APIs",
   "main": "index.js",
   "author": "Gareth Hunt",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.23.6"
+  },
+  "scripts": {
+    "start": "browser-sync start --server --files \"*.html\" \"*.js\""
+  }
 }

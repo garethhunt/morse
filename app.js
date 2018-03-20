@@ -39,7 +39,7 @@
     '0': []
   }
 
-  const audioContext = new AudioContext();
+  const audioContext = new (window.AudioContext||window.webkitAudioContext)();
   const gainNode = audioContext.createGain();
   gainNode.connect(audioContext.destination);
 
@@ -56,7 +56,9 @@
 
     // Create the oscillator
     const oscillator = audioContext.createOscillator();
-    oscillator.connect(gainNode).connect(audioContext.destination);
+    // Safari returns undefined from connect
+    oscillator.connect(gainNode);
+    oscillator.connect(audioContext.destination);
     oscillator.frequency.setValueAtTime(220, audioContext.currentTime);
     oscillator.type='sine'; //sine, square, sawtooth, triangle
     oscillator.addEventListener('ended', function () {

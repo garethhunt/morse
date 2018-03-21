@@ -2,15 +2,38 @@
 <html>
   <head>
     <title>Morse Code</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic@6.5.0/picnic.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-      span {
+      .hero {
+        background-color: #000;
+        color: #fff;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 10px;
+      }
+      .controls {
+        padding: 3px
+      }
+      #messages span {
+        display: inline;
         padding-right: 2px;
       }
     </style>
   </head>
   <body>
-    <textarea id="message"></textarea>
-    <input id="send" type="button" value="Send">
+    <div class="hero">
+      <h1>Morse Code</h1>
+      <p>A simple morse code translator to demonstrate the browser <a href ="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API" target="_blank">Web Audio API</a>.</p>
+    </div>
+    <div class="controls flex one two-500">
+      <div>
+        <textarea id="message" placeholder="Enter your message"></textarea>
+      </div>
+      <div>
+        <button id="send">Send</button>
+      </div>
+    </div>
     <section id="messages"></section>
     <script src="app.js" type="application/javascript"></script>
   </body>

@@ -112,6 +112,7 @@
     if (message.trim().length > 0) {
       // Add a container for the message to print out
       const messageDiv = document.createElement('div');
+      messageDiv.classList.add('card'); // Picnic CSS card
       document.getElementById('messages').appendChild(messageDiv);
 
       // Play the message

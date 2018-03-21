@@ -51,24 +51,30 @@
       document.getElementById('messages').lastChild.appendChild(charSpan);
     }
 
-    // Set the volume
-    gainNode.gain.setTargetAtTime(volume, audioContext.currentTime, 0);
+    if (volume > 0) {
+      // Set the volume
+      gainNode.gain.setTargetAtTime(volume, audioContext.currentTime, 0);
 
-    // Create the oscillator
-    const oscillator = audioContext.createOscillator();
-    // Safari returns undefined from connect, so do not chain the connect() calls
-    oscillator.connect(gainNode);
-    oscillator.connect(audioContext.destination);
-    oscillator.frequency.setValueAtTime(220, audioContext.currentTime);
-    oscillator.type='sine'; //sine, square, sawtooth, triangle
-    oscillator.addEventListener('ended', function () {
+      // Create the oscillator
+      const oscillator = audioContext.createOscillator();
+      oscillator.frequency.setValueAtTime(220, audioContext.currentTime);
+      oscillator.type='sine'; //sine, square, sawtooth, triangle
+      // Safari returns undefined from connect, so do not chain the connect() calls
+      oscillator.connect(gainNode);
+      oscillator.connect(audioContext.destination);
+      oscillator.addEventListener('ended', function () {
+        setTimeout(function () {
+          play(morseArray, index+1);
+        }, 150); // 150ms = symbol space
+      });
+
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + length);
+    } else {
       setTimeout(function () {
         play(morseArray, index+1);
-      }, volume == 0 ? 0 : 150);
-    });
-
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + length);
+      }, length * 1000);
+    }
   }
 
   const dit = transmit.bind(undefined, 1, 0.15, '.');

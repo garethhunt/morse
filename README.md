@@ -22,7 +22,7 @@ Browser-sync is used for the development server:
 
 ## TODO:
 
-1. [ ] Make the UI prettier
+1. [x] Make the UI prettier
 1. [ ] Waveform controls (Shape, frequency)
 1. [ ] Volume control
 1. [ ] Sound length controls

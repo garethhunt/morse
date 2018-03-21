@@ -56,7 +56,7 @@
 
     // Create the oscillator
     const oscillator = audioContext.createOscillator();
-    // Safari returns undefined from connect
+    // Safari returns undefined from connect, so do not chain the connect() calls
     oscillator.connect(gainNode);
     oscillator.connect(audioContext.destination);
     oscillator.frequency.setValueAtTime(220, audioContext.currentTime);
